@@ -82,7 +82,7 @@ nav h1 {
   margin-top: 60px;
 }
 
-.line1 {
+.row1 {
   flex: 33%;
   display: flex;
   flex-direction: row;
@@ -90,14 +90,14 @@ nav h1 {
   justify-content: center;
   margin: 5px;
 }
-.line2 {
+.row2 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5px;
 }
-.line3 {
+.row3 {
   flex: 33%;
   display: flex;
   flex-direction: row;

@@ -7,18 +7,18 @@ function Keyboard() {
   const line3 = ["Z","X","C","V","B","N","M"]
 
   return (
-    <div class="keyboard">
-      <div class="line1">
+    <div className="keyboard">
+      <div className="row1">
         {line1.map((key) => {
           return <Key keyVal={key}/>;
         })}
       </div>
-      <div class="line2">
+      <div className="row2">
       {line2.map((key) => {
           return <Key keyVal={key}/>;
         })}
       </div>
-      <div class="line3">
+      <div className="row3">
       <Key keyVal={"ENTER"} bigKey/>
       {line3.map((key) => {
           return <Key keyVal={key}/>;

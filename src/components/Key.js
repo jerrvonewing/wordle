@@ -2,13 +2,16 @@ import React, {useContext} from 'react'
 import { AppContext} from '../App'
 
 function Key({keyVal, bigKey}) {
-    const {board,setBoard} = useContext(AppContext)
-
+    const {pressLetter,pressEnter,pressDelete} = useContext(AppContext)
 
     const selectLetter = () => {
-        const newBoard = [...board]
-        newBoard[0][0] = keyVal
-        setBoard(newBoard)
+        //When user hits Enter
+        if(keyVal === "ENTER")
+            pressEnter();
+        else if(keyVal === "DELETE") 
+            pressDelete();
+        else
+            pressLetter(keyVal);
     }
 
 return (
