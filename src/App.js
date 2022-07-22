@@ -12,7 +12,7 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPosition: 0});
 
-  const correctWord = "noisy"
+  const correctWord = "NOISY"
   
   const pressLetter = (keyVal) => {
     if(currentAttempt.letterPosition > 4) return;
