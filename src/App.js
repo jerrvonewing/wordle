@@ -3,8 +3,8 @@ import './App.css';
 import Board from './components/Board.js';
 import Keyboard from './components/Keyboard.js';
 import {createContext} from 'react';
-import React, {useState} from 'react';
-import {boardDefault} from './components/Words.js';
+import React, {useState, useEffect} from 'react';
+import {boardDefault, generateWordSet} from './components/Words.js';
 
 export const AppContext = createContext();
 
@@ -13,6 +13,12 @@ function App() {
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPosition: 0});
 
   const correctWord = "NOISY"
+  
+  useEffect(() => {
+    generateWordSet().then((words) => {
+      console.log(words)
+    })
+  }, [])
   
   const pressLetter = (keyVal) => {
     if(currentAttempt.letterPosition > 4) return;
