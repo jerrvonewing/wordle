@@ -13,7 +13,7 @@ function App() {
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPosition: 0});
   const [wordSet, setWordSet] = useState(new Set());
 
-  const correctWord = ("NOISY").toLowerCase();
+  const correctWord = "NOISY";
   
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -41,7 +41,6 @@ function App() {
       currentWord = currentWord.toLowerCase()
       console.log("The word is " + currentWord)
       if(wordSet.has(currentWord)){
-        console.log(currentWord)
         setCurrentAttempt({attempt: currentAttempt.attempt + 1, letterPosition: 0})
       }
       else{

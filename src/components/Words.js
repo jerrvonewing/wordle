@@ -16,7 +16,6 @@ export const boardDefault = [
             const wordArr = result.split("\r\n")
             wordSet = new Set(wordArr);
             });
-            console.log(wordSet);
 
             return {wordSet};
     }
