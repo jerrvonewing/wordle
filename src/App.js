@@ -11,14 +11,16 @@ export const AppContext = createContext();
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPosition: 0});
+  const [wordSet, setWordSet] = useState(new Set());
 
-  const correctWord = "NOISY"
+  const correctWord = ("NOISY").toLowerCase();
   
   useEffect(() => {
     generateWordSet().then((words) => {
-      console.log(words)
-    })
-  }, [])
+
+      setWordSet(words.wordSet);
+    });
+  }, []);
   
   const pressLetter = (keyVal) => {
     if(currentAttempt.letterPosition > 4) return;
@@ -31,7 +33,20 @@ function App() {
   const pressEnter = () => {
       //Validates 5 letters are present
       if(currentAttempt.letterPosition !== 5) return;
-      setCurrentAttempt({attempt: currentAttempt.attempt + 1, letterPosition: 0});
+
+      let currentWord = "";
+      for (let i =0; i < 5; i++){
+        currentWord += board[currentAttempt.attempt][i];
+      }
+      currentWord = currentWord.toLowerCase()
+      console.log("The word is " + currentWord)
+      if(wordSet.has(currentWord)){
+        console.log(currentWord)
+        setCurrentAttempt({attempt: currentAttempt.attempt + 1, letterPosition: 0})
+      }
+      else{
+        alert("Word Not Found");
+      }
   }
 
   const pressDelete = () => {

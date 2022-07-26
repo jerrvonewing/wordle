@@ -1,4 +1,4 @@
-import wordBank from '../word-bank.txt';
+import wordBank from './word-bank.txt';
 export const boardDefault = [
     ["","","","",""],
     ["","","","",""],
@@ -12,11 +12,11 @@ export const boardDefault = [
         await fetch(wordBank)
             .then((response) => response.text())
             .then((result) => {
-            console.log(result);
 
-            const wordArr = result.split("\n")
+            const wordArr = result.split("\r\n")
             wordSet = new Set(wordArr);
             });
+            console.log(wordSet);
 
             return {wordSet};
     }
