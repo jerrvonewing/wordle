@@ -6,6 +6,7 @@ import GameOver from './components/GameOver.js';
 import {createContext} from 'react';
 import React, {useState, useEffect} from 'react';
 import {boardDefault, generateWordSet} from './components/Words.js';
+import Button, {BUTTON_TYPES_CLASSES} from './components/Button/Button';
 
 export const AppContext = createContext();
 
@@ -78,6 +79,7 @@ function App() {
         <div className="game">
           <Board/>
           {gameOver.gameOver ? <GameOver /> : <Keyboard/>}
+          {gameOver.gameOver ? <Button buttonType={BUTTON_TYPES_CLASSES.inverted}>Try Again</Button> : ""}
         </div>
       </AppContext.Provider>
     </div>
