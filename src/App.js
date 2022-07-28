@@ -43,7 +43,6 @@ function App() {
         currentWord += board[currentAttempt.attempt][i];
       }
       currentWord = currentWord.toLowerCase()
-      console.log("The word is " + currentWord)
       if(wordSet.has(currentWord)){
         setCurrentAttempt({attempt: currentAttempt.attempt + 1, letterPosition: 0})
       }
@@ -56,7 +55,7 @@ function App() {
         return;
       }
 
-      if(currentAttempt.attempt === 5)
+      if(currentAttempt.attempt === 5 && wordSet.has(currentWord))
         setGameOver({gameOver: true, guessedWord: false});
   }
 
