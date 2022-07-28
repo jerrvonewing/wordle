@@ -11,18 +11,18 @@ import Button, {BUTTON_TYPES_CLASSES} from './components/Button/Button';
 export const AppContext = createContext();
 
 function App() {
+  
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPosition: 0});
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
-
-  const correctWord = "NOISY";
+  const [correctWord,setCorrectWord] = useState("");
   
   useEffect(() => {
     generateWordSet().then((words) => {
-
       setWordSet(words.wordSet);
+      setCorrectWord(words.generatedWord);
     });
   }, []);
   
@@ -69,6 +69,23 @@ function App() {
       setBoard(newBoard);
   }
 
+  const resetGame = () => {
+    /*
+    setCurrentAttempt({attempt: 0, letterPosition: 0});
+    setBoard(boardDefault);
+    setDisabledLetters([]);
+    setGameOver({gameOver: false, guessedWord: false});
+    const newBoard = [...board]
+    for (let i = 0; i < 6; i++){
+      for (let j = 0; j <5; j++){
+        newBoard[i][j] = "";
+
+      }
+    }
+    */
+    window.location.reload();
+
+  }
 
   return (
     <div className="App">
@@ -79,7 +96,7 @@ function App() {
         <div className="game">
           <Board/>
           {gameOver.gameOver ? <GameOver /> : <Keyboard/>}
-          {gameOver.gameOver ? <Button buttonType={BUTTON_TYPES_CLASSES.inverted}>Try Again</Button> : ""}
+          {gameOver.gameOver ? <Button buttonType={BUTTON_TYPES_CLASSES.inverted} onClick={ () => resetGame()}>Try Again</Button> : ""}
         </div>
       </AppContext.Provider>
     </div>
